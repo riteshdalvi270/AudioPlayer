@@ -17,14 +17,14 @@ public class AudiPlayer extends AppCompatActivity {
 
         final String path = "/Users/ritesh/Documents/Ritesh/data/ritesh.mp3";
 
-        final MediaPlayer mp = new MediaPlayer();
-        try {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.ritesh);
+    /*    try {
             mp.setDataSource(path);
         } catch (IOException e) {
             e.printStackTrace();
         } catch(IllegalStateException e) {
             e.printStackTrace();
-        }
+        }*/
 
         try {
             mp.prepare();
@@ -50,6 +50,7 @@ public class AudiPlayer extends AppCompatActivity {
             public void onClick(View v) {
                 mp.stop();
                 mp.reset();
+
                 try {
                     mp.setDataSource(path);
                 } catch (IOException e) {
@@ -57,6 +58,8 @@ public class AudiPlayer extends AppCompatActivity {
                 }
             }
         });
+
+        MediaPlayer.create(this, R.raw.ritesh);
     }
 
     private void playAudio(final String path, final MediaPlayer mp) {

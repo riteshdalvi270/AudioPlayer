@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import java.io.IOException;
 
@@ -55,6 +57,20 @@ public class AudiPlayer extends AppCompatActivity {
                     mp.setDataSource(path);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            }
+        });
+
+       final ToggleButton toggleButton =  (ToggleButton)findViewById(R.id.toggleButton);
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked) {
+                    mp.setLooping(true);
+                }else {
+                    mp.setLooping(false);
                 }
             }
         });
